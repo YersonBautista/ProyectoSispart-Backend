@@ -1,4 +1,4 @@
-package com.proyecto.apartahotel.sispart.empleados.dto;
+package com.proyecto.apartahotel.sispart.tiposangre.dto;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;

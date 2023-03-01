@@ -1,4 +1,4 @@
-package com.proyecto.apartahotel.sispart.empleados.entity;
+package com.proyecto.apartahotel.sispart.genero.entity;
 
 
 

@@ -6,9 +6,11 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.proyecto.apartahotel.sispart.empleados.entity.Genero;
-import com.proyecto.apartahotel.sispart.empleados.entity.TipoSangre;
+
+
+import com.proyecto.apartahotel.sispart.genero.entity.Genero;
 import com.proyecto.apartahotel.sispart.tipDocumento.entity.TipoDocumento;
+import com.proyecto.apartahotel.sispart.tiposangre.entity.TipoSangre;
 
 public class EmpleadoDto {
 

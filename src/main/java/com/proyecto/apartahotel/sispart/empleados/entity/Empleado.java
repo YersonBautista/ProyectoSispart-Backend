@@ -16,7 +16,9 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.proyecto.apartahotel.sispart.genero.entity.Genero;
 import com.proyecto.apartahotel.sispart.tipDocumento.entity.TipoDocumento;
+import com.proyecto.apartahotel.sispart.tiposangre.entity.TipoSangre;
 
 @Entity
 @Table(name = "empleado")
