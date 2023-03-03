@@ -19,7 +19,7 @@ public class TipoSangreController {
 	@Autowired
 	private ITipoSangreService tipoSangreService;
 
-	@GetMapping("/listarGenero")
+	@GetMapping("/listarTipoSangre")
 	public ResponseEntity<List<TipoSangre>> findAll() {
 		List<TipoSangre> findAll = tipoSangreService.findAll();
 		return new ResponseEntity<List<TipoSangre>>(findAll, HttpStatus.OK);
