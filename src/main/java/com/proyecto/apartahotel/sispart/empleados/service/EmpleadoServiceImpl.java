@@ -31,7 +31,7 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	}
 
 	@Override
-	public Optional<Empleado> getByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, int numDocumento) {
+	public Optional<Empleado> getByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento) {
 
 		return empleadoRepository.findByIdTipoDocumentoAndNumDocumento(idTipoDocumento, numDocumento);
 	}
@@ -54,7 +54,7 @@ public class EmpleadoServiceImpl implements IEmpleadoService {
 	}
 
 	@Override
-	public boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, int numDocumento) {
+	public boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento) {
 
 		return empleadoRepository.existsByIdTipoDocumentoAndNumDocumento(idTipoDocumento, numDocumento);
 	}

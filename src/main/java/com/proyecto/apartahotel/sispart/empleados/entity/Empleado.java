@@ -38,7 +38,7 @@ public class Empleado implements Serializable {
 	private TipoDocumento idTipoDocumento;
 	@NotNull
 	@Column(name = "num_documento")
-	private Integer numDocumento;
+	private Long numDocumento;
 	@NotNull
 	@Column(name = "num_telefono")
 	private Long numTelefono;
@@ -73,12 +73,14 @@ public class Empleado implements Serializable {
 	@JoinColumn(name = "id_tip_sangre")
 	private TipoSangre idTipoSangre;
 
+	private String fotoEmpleado;
+
 	public Empleado() {
 
 	}
 
 	public Empleado(@NotNull String nombre, @NotNull String apellido, @NotNull TipoDocumento idTipoDocumento,
-			@NotNull Integer numDocumento, @NotNull Long numTelefono, @NotNull String correo,
+			@NotNull Long numDocumento, @NotNull Long numTelefono, @NotNull String correo,
 			@NotNull Date fechaNacimiento, @NotNull String direccion, @NotNull String nomContactoEmergencia,
 			@NotNull Long numContactoEmergencia, @NotNull String eps, @NotNull String arl, @NotNull Genero idSexoBio,
 			@NotNull TipoSangre idTipoSangre) {
@@ -100,7 +102,7 @@ public class Empleado implements Serializable {
 	}
 
 	public Empleado(Integer idEmpleado, @NotNull String nombre, @NotNull String apellido,
-			@NotNull TipoDocumento idTipoDocumento, @NotNull Integer numDocumento, @NotNull Long numTelefono,
+			@NotNull TipoDocumento idTipoDocumento, @NotNull Long numDocumento, @NotNull Long numTelefono,
 			@NotNull String correo, @NotNull Date fechaNacimiento, @NotNull String direccion,
 			@NotNull String nomContactoEmergencia, @NotNull Long numContactoEmergencia, @NotNull String eps,
 			@NotNull String arl, @NotNull Genero idGenero, @NotNull TipoSangre idTipoSangre) {
@@ -126,7 +128,7 @@ public class Empleado implements Serializable {
 		return idEmpleado;
 	}
 
-	public void setId(Integer idEmpleado) {
+	public void setIdEmpleado(Integer idEmpleado) {
 		this.idEmpleado = idEmpleado;
 	}
 
@@ -154,11 +156,11 @@ public class Empleado implements Serializable {
 		this.idTipoDocumento = idTipoDocumento;
 	}
 
-	public Integer getNumDocumento() {
+	public Long getNumDocumento() {
 		return numDocumento;
 	}
 
-	public void setNumDocumento(Integer numDocumento) {
+	public void setNumDocumento(Long numDocumento) {
 		this.numDocumento = numDocumento;
 	}
 
@@ -178,7 +180,6 @@ public class Empleado implements Serializable {
 		this.correo = correo;
 	}
 
-	
 	public Date getFechaNacimiento() {
 		return fechaNacimiento;
 	}
@@ -242,6 +243,18 @@ public class Empleado implements Serializable {
 	public void setIdTipoSangre(TipoSangre idTipoSangre) {
 		this.idTipoSangre = idTipoSangre;
 	}
+	
+	
+
+	public String getFotoEmpleado() {
+		return fotoEmpleado;
+	}
+
+	public void setFotoEmpleado(String fotoEmpleado) {
+		this.fotoEmpleado = fotoEmpleado;
+	}
+
+
 
 	private static final long serialVersionUID = 8786858584033720428L;
 

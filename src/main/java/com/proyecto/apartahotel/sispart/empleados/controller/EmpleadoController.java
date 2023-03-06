@@ -1,9 +1,18 @@
 package com.proyecto.apartahotel.sispart.empleados.controller;
 
+import java.io.IOException;
+import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
+import java.util.UUID;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.core.io.UrlResource;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,8 +22,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
+import com.proyecto.apartahotel.sispart.doclegales.entity.DocsLegales;
 import com.proyecto.apartahotel.sispart.empleados.dto.EmpleadoDto;
 import com.proyecto.apartahotel.sispart.empleados.entity.Empleado;
 import com.proyecto.apartahotel.sispart.empleados.service.IEmpleadoService;
@@ -48,7 +60,7 @@ public class EmpleadoController {
 	@GetMapping("/detalleEmpleado/{idTipoDocumento}/{numDocumento}")
 	public ResponseEntity<Empleado> getByTipoDocumentoAndNumDocumento(
 			@PathVariable("idTipoDocumento") TipoDocumento idTipoDocumento,
-			@PathVariable("numDocumento") int numDocumento) {
+			@PathVariable("numDocumento") Long numDocumento) {
 
 		if (!empleadoService.existsByIdTipoDocumentoAndNumDocumento(idTipoDocumento, numDocumento))
 			return new ResponseEntity(new Mensaje("No existe el empleado con el documento "
@@ -205,6 +217,7 @@ public class EmpleadoController {
 		empleado.setEps(empleadoDto.getEps());
 		empleado.setArl(empleadoDto.getArl());
 		empleado.setIdSexoBio(empleadoDto.getIdSexoBio());
+		empleado.setFotoEmpleado(empleadoDto.getFotoEmpleado());
 
 		empleadoService.save(empleado);
 		return new ResponseEntity(new Mensaje("Los datos del empleado han sido actualizados"), HttpStatus.OK);
@@ -220,6 +233,55 @@ public class EmpleadoController {
 		empleadoService.delete(idEmpleado);
 		return new ResponseEntity(new Mensaje(" El registro del huesped ha sido eliminado"), HttpStatus.OK);
 	}
-	/** 7 */
+
+	@PostMapping("/registrarEmpleado/uploadFotoEmpleado")
+	public ResponseEntity<?> uploadFotoEmpleado(@RequestParam("foto") MultipartFile foto,
+			@RequestParam("idEmpleado") int idEmpleado) {
+
+		Empleado empleado = empleadoService.getOne(idEmpleado).get();
+
+		if (!foto.isEmpty()) {
+			String nombreFoto = UUID.randomUUID().toString() + "-" + foto.getOriginalFilename().replace(" ", "");
+			Path rutaArchivo = Paths.get("uploadsFotoEmpleado").resolve(nombreFoto).toAbsolutePath();
+
+			try {
+				Files.copy(foto.getInputStream(), rutaArchivo);
+			} catch (IOException e) {
+
+				return new ResponseEntity(new Mensaje("Error al subir la imagen" + nombreFoto),
+						HttpStatus.INTERNAL_SERVER_ERROR);
+			}
+
+			empleado.setFotoEmpleado(nombreFoto);
+
+			empleadoService.save(empleado);
+
+		}
+
+		return new ResponseEntity(new Mensaje("Se ha subido el comprobante de pago exitosamente"), HttpStatus.OK);
+
+	}
+
+	@GetMapping("/uploadEmpleado/img/{nombreFoto:.+}")
+	public ResponseEntity<Resource> verFotoEmpleado(@PathVariable String nombreFoto) {
+		Path rutaArchivo = Paths.get("uploadsFotoEmpleado").resolve(nombreFoto).toAbsolutePath();
+		Resource recurso = null;
+
+		try {
+			recurso = new UrlResource(rutaArchivo.toUri());
+		} catch (MalformedURLException e) {
+
+			e.printStackTrace();
+		}
+
+		if (!recurso.exists() && !recurso.isReadable()) {
+			throw new RuntimeException("Error no se pudo cargar la imagen: " + nombreFoto);
+		}
+		HttpHeaders cabecera = new HttpHeaders();
+		cabecera.add(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + recurso.getFilename() + "\"");
+
+		return new ResponseEntity<Resource>(recurso, cabecera, HttpStatus.OK);
+
+	}
 
 }

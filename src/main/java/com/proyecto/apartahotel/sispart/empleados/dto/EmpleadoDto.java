@@ -21,7 +21,7 @@ public class EmpleadoDto {
 	@NotBlank
 	private TipoDocumento idTipoDocumento;
 	@NotBlank
-	private Integer numDocumento;
+	private Long numDocumento;
 	@NotBlank
 	private Long numTelefono;
 	@NotBlank
@@ -44,13 +44,15 @@ public class EmpleadoDto {
 	private Genero idSexoBio;
 	@NotBlank
 	private TipoSangre idTipoSangre;
+	
+	private String fotoEmpleado;
 
 	public EmpleadoDto() {
 
 	}
 
 	public EmpleadoDto(@NotBlank String nombre, @NotBlank String apellido, @NotBlank TipoDocumento idTipoDocumento,
-			@NotBlank Integer numDocumento, @NotBlank Long numTelefono, @NotBlank @Email String correo,
+			@NotBlank Long numDocumento, @NotBlank Long numTelefono, @NotBlank @Email String correo,
 			@NotBlank Date fechaNacimiento, @NotBlank String direccion, @NotBlank String nomContactoEmergencia,
 			@NotBlank Long numContactoEmergencia, @NotBlank String eps, @NotBlank String arl,
 			@NotBlank Genero idSexoBio, @NotBlank TipoSangre idTipoSangre) {
@@ -95,11 +97,11 @@ public class EmpleadoDto {
 		this.idTipoDocumento = idTipoDocumento;
 	}
 
-	public Integer getNumDocumento() {
+	public Long getNumDocumento() {
 		return numDocumento;
 	}
 
-	public void setNumDocumento(Integer numDocumento) {
+	public void setNumDocumento(Long numDocumento) {
 		this.numDocumento = numDocumento;
 	}
 
@@ -171,7 +173,7 @@ public class EmpleadoDto {
 		return idSexoBio;
 	}
 
-	public void setIdGenero(Genero idGenero) {
+	public void setIdSexoBio(Genero idSexoBio) {
 		this.idSexoBio = idSexoBio;
 	}
 
@@ -182,5 +184,15 @@ public class EmpleadoDto {
 	public void setIdTipoSangre(TipoSangre idTipoSangre) {
 		this.idTipoSangre = idTipoSangre;
 	}
+
+	public String getFotoEmpleado() {
+		return fotoEmpleado;
+	}
+
+	public void setFotoEmpleado(String fotoEmpleado) {
+		this.fotoEmpleado = fotoEmpleado;
+	}
+	
+	
 
 }

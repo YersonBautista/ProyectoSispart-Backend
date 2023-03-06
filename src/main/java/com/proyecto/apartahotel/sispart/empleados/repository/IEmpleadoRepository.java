@@ -13,9 +13,9 @@ import com.proyecto.apartahotel.sispart.tipDocumento.entity.TipoDocumento;
 @Repository
 public interface IEmpleadoRepository extends JpaRepository<Empleado, Integer> {
 
-	Optional<Empleado> findByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento,int numDocumento);
+	Optional<Empleado> findByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento,Long numDocumento);
 
-	boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento,int numDocumento);
+	boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento,Long numDocumento);
 
 	void deleteByNumDocumento(int numDocumento);
 

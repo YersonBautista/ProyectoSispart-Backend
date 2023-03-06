@@ -12,7 +12,7 @@ public interface IEmpleadoService {
 
 	public Optional<Empleado> getOne(int idEmpleado);
 
-	public Optional<Empleado> getByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento,int numDocumento);
+	public Optional<Empleado> getByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento,Long numDocumento);
 
 	public void save(Empleado empleado);
 
@@ -20,6 +20,6 @@ public interface IEmpleadoService {
 
 	public boolean existsById(int idEmpleado);
 
-	public boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento,int numDocumento);
+	public boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento,Long numDocumento);
 
 }
