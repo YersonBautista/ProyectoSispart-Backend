@@ -32,7 +32,7 @@ public class HuespedServiceImpl implements IHuespedService {
 	}
 
 	@Override
-	public Optional<Huesped> getByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, int numDocumento) {
+	public Optional<Huesped> getByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento) {
 
 		return huespedRepository.findByIdTipoDocumentoAndNumDocumento(idTipoDocumento, numDocumento);
 	}
@@ -44,7 +44,7 @@ public class HuespedServiceImpl implements IHuespedService {
 	}
 
 	@Override
-	public void deleteByIdTipoDocumentoNumDocumento(TipoDocumento idTipoDocumento, int numDocumento) {
+	public void deleteByIdTipoDocumentoNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento) {
 
 		huespedRepository.deleteByIdTipoDocumentoAndNumDocumento(idTipoDocumento, numDocumento);
 	}
@@ -56,7 +56,7 @@ public class HuespedServiceImpl implements IHuespedService {
 	}
 
 	@Override
-	public boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, int numDocumento) {
+	public boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento) {
 
 		return huespedRepository.existsByIdTipoDocumentoAndNumDocumento(idTipoDocumento, numDocumento);
 	}

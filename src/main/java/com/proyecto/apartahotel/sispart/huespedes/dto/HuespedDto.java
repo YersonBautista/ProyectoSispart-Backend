@@ -28,7 +28,7 @@ public class HuespedDto {
 	@NotBlank
 	private TipoDocumento idTipoDocumento;
 	@NotBlank
-	private Integer numDocumento;
+	private Long numDocumento;
 	@NotBlank
 	private Nacionalidad idNacionalidad;
 	@NotBlank
@@ -44,7 +44,7 @@ public class HuespedDto {
 
 	public HuespedDto(@NotBlank String nombre, @NotBlank String apellido, @NotBlank String direccion,
 			@NotBlank Long numCelular, @Email String correo, @NotBlank TipoDocumento idTipoDocumento,
-			@NotBlank Integer numDocumento, @NotBlank Nacionalidad idNacionalidad, @NotBlank String lugarOrigen,
+			@NotBlank Long numDocumento, @NotBlank Nacionalidad idNacionalidad, @NotBlank String lugarOrigen,
 			String nomContactoEmergencia, Long numContactoEmergencia, boolean estadoHuesped) {
 
 		this.nombre = nombre;
@@ -110,11 +110,11 @@ public class HuespedDto {
 		this.idTipoDocumento = idTipoDocumento;
 	}
 
-	public Integer getNumDocumento() {
+	public Long getNumDocumento() {
 		return numDocumento;
 	}
 
-	public void setNumDocumento(Integer numDocumento) {
+	public void setNumDocumento(Long numDocumento) {
 		this.numDocumento = numDocumento;
 	}
 

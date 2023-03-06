@@ -51,7 +51,7 @@ public class HuespedController {
 	}
 
 	@GetMapping("/detalleHuesped/{numDocumento}/{idTipoDocumento}")
-	public ResponseEntity<Huesped> getByIdTipoDocumentoAndNumDocumento(@PathVariable("numDocumento") int numDocumento,
+	public ResponseEntity<Huesped> getByIdTipoDocumentoAndNumDocumento(@PathVariable("numDocumento") Long numDocumento,
 			@PathVariable("idTipoDocumento") TipoDocumento idTipoDocumento) {
 
 		if (!huespedesService.existsByIdTipoDocumentoAndNumDocumento(idTipoDocumento, numDocumento))
@@ -130,9 +130,11 @@ public class HuespedController {
 				&& huespedesService.getByIdTipoDocumentoAndNumDocumento(huespedesDto.getidTipoDocumento(),
 						huespedesDto.getNumDocumento()).get().getidHuesped() != idHuesped)
 
-			return new ResponseEntity(new Mensaje("No es posible actualizar el huesped con documento: "
-					+ huespedesDto.getidTipoDocumento().getTipDocumento() + ": " + huespedesDto.getNumDocumento()
-					+ " porqué ya cuenta con un registro "), HttpStatus.NOT_FOUND);
+			return new ResponseEntity(
+					new Mensaje("No es posible actualizar el huesped con documento: "
+							+ huespedesDto.getidTipoDocumento().getTipDocumento() + ": "
+							+ huespedesDto.getNumDocumento() + " porqué ya cuenta con un registro "),
+					HttpStatus.NOT_FOUND);
 
 		if (StringUtils.isBlank(huespedesDto.getNombre()))
 			return new ResponseEntity(new Mensaje("El campo nombre es obligatorio."), HttpStatus.BAD_REQUEST);
@@ -187,7 +189,7 @@ public class HuespedController {
 	}
 
 	@DeleteMapping("/deleteHuespedes/{numDocumento}/{idTipoDocumento}")
-	public ResponseEntity<?> deleteHuespedes(@PathVariable("numDocumento") int numDocumento,
+	public ResponseEntity<?> deleteHuespedes(@PathVariable("numDocumento") Long numDocumento,
 			@PathVariable("idTipoDocumento") TipoDocumento idTipoDocumento) {
 		if (!huespedesService.existsByIdTipoDocumentoAndNumDocumento(idTipoDocumento, numDocumento))
 

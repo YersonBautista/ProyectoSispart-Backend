@@ -52,7 +52,7 @@ public class Huesped implements Serializable {
 
 	@NotNull
 	@Column(name = "num_documento")
-	private Integer numDocumento;
+	private Long numDocumento;
 
 	@NotNull
 	@ManyToOne
@@ -78,7 +78,7 @@ public class Huesped implements Serializable {
 
 	public Huesped(int idHuesped, @NotNull String nombre, @NotNull String apellido, @NotNull String direccion,
 			@NotNull Long numCelular, @NotNull String correo, @NotNull TipoDocumento idTipoDocumento,
-			@NotNull Integer numDocumento, @NotNull Nacionalidad idNacionalidad, @NotNull String lugarOrigen,
+			@NotNull Long numDocumento, @NotNull Nacionalidad idNacionalidad, @NotNull String lugarOrigen,
 			String nomContactoEmergencia, Long numContactoEmergencia, boolean estadoHuesped) {
 
 		this.idHuesped = idHuesped;
@@ -98,7 +98,7 @@ public class Huesped implements Serializable {
 
 	public Huesped(@NotNull String nombre, @NotNull String apellido, @NotNull String direccion,
 			@NotNull Long numCelular, @NotNull String correo, @NotNull TipoDocumento idTipoDocumento,
-			@NotNull Integer numDocumento, @NotNull Nacionalidad idNacionalidad, @NotNull String lugarOrigen,
+			@NotNull Long numDocumento, @NotNull Nacionalidad idNacionalidad, @NotNull String lugarOrigen,
 			String nomContactoEmergencia, Long numContactoEmergencia, boolean estadoHuesped) {
 
 		this.nombre = nombre;
@@ -172,11 +172,11 @@ public class Huesped implements Serializable {
 		this.idTipoDocumento = idTipoDocumento;
 	}
 
-	public Integer getNumDocumento() {
+	public Long getNumDocumento() {
 		return numDocumento;
 	}
 
-	public void setNumDocumento(Integer numDocumento) {
+	public void setNumDocumento(Long numDocumento) {
 		this.numDocumento = numDocumento;
 	}
 

@@ -12,14 +12,14 @@ import com.proyecto.apartahotel.sispart.tipDocumento.entity.TipoDocumento;
 @Repository
 public interface IHuespedRepository extends JpaRepository<Huesped, Integer> {
 
-	Optional<Huesped> findByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, int numDocumento);
+	Optional<Huesped> findByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento);
 
 	Optional<Huesped> findByIdTipoDocumento(TipoDocumento idTipoDocumento);
 
 	boolean existsByIdTipoDocumento(TipoDocumento idtipoDocumento);
 
-	boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, int numDocumento);
+	boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento);
 
-	void deleteByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, int numDocumento);
+	void deleteByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento);
 
 }

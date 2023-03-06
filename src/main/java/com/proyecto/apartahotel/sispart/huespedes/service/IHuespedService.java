@@ -12,7 +12,7 @@ public interface IHuespedService {
 
 	public Optional<Huesped> getOne(int id);
 
-	public Optional<Huesped> getByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, int numDocumento);
+	public Optional<Huesped> getByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento);
 
 	public Optional<Huesped> getByIdTipoDocumento(TipoDocumento idTipoDocumento);
 
@@ -20,10 +20,10 @@ public interface IHuespedService {
 
 	public void save(Huesped huesped);
 
-	public void deleteByIdTipoDocumentoNumDocumento(TipoDocumento idTipoDocumento, int numDocumento);
+	public void deleteByIdTipoDocumentoNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento);
 
 	public boolean existsById(int id);
 
-	public boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, int numDocumento);
+	public boolean existsByIdTipoDocumentoAndNumDocumento(TipoDocumento idTipoDocumento, Long numDocumento);
 
 }
