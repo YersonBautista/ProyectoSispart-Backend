@@ -17,6 +17,7 @@ import com.proyecto.apartahotel.sispart.huespedes.entity.Huesped;
 public class CheckInDto {
 
 	@NotBlank
+	// private Long numDocumento;;
 	private Huesped idHuesped;
 	@NotBlank
 	private Habitaciones idHabitacion;
@@ -29,28 +30,27 @@ public class CheckInDto {
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@JsonFormat(pattern = "dd-MM-yyyy", timezone = "GMT-5")
 	@NotBlank
-	private Date fecha_ingreso;
+	private Date fechaIngreso;
 
 	@Temporal(TemporalType.TIME)
 	@DateTimeFormat(pattern = "HH:mm")
 	@JsonFormat(pattern = "HH:mm", timezone = "GMT-5")
 	@NotBlank
-	private Date hora_ingreso;
+	private Date horaIngreso;
 
 	public CheckInDto() {
 
 	}
 
-	public CheckInDto(@NotNull Huesped idHuesped, Habitaciones idHabitacion, @NotNull Integer numAcompanantes,
-			@NotNull Integer dias_aprox_estadia, @NotNull Date fecha_ingreso, @NotNull Date hora_ingreso) {
-
+	public CheckInDto(@NotBlank Huesped idHuesped, @NotBlank Habitaciones idHabitacion,
+			@NotBlank Integer numAcompanantes, @NotBlank Integer dias_aprox_estadia, @NotBlank Date fechaIngreso,
+			@NotBlank Date horaIngreso) {
 		this.idHuesped = idHuesped;
 		this.idHabitacion = idHabitacion;
 		this.numAcompanantes = numAcompanantes;
 		this.dias_aprox_estadia = dias_aprox_estadia;
-		this.fecha_ingreso = fecha_ingreso;
-		this.hora_ingreso = hora_ingreso;
-
+		this.fechaIngreso = fechaIngreso;
+		this.horaIngreso = horaIngreso;
 	}
 
 	public Huesped getIdHuesped() {
@@ -61,7 +61,6 @@ public class CheckInDto {
 		this.idHuesped = idHuesped;
 	}
 
-	
 	public Habitaciones getIdHabitacion() {
 		return idHabitacion;
 	}
@@ -70,11 +69,11 @@ public class CheckInDto {
 		this.idHabitacion = idHabitacion;
 	}
 
-	public Integer getnumAcompanantes() {
+	public Integer getNumAcompanantes() {
 		return numAcompanantes;
 	}
 
-	public void setnumAcompanantes(Integer numAcompanantes) {
+	public void setNumAcompanantes(Integer numAcompanantes) {
 		this.numAcompanantes = numAcompanantes;
 	}
 
@@ -86,20 +85,20 @@ public class CheckInDto {
 		this.dias_aprox_estadia = dias_aprox_estadia;
 	}
 
-	public Date getFecha_ingreso() {
-		return fecha_ingreso;
+	public Date getFechaIngreso() {
+		return fechaIngreso;
 	}
 
-	public void setFecha_ingreso(Date fecha_ingreso) {
-		this.fecha_ingreso = fecha_ingreso;
+	public void setFechaIngreso(Date fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
 	}
 
-	public Date getHora_ingreso() {
-		return hora_ingreso;
+	public Date getHoraIngreso() {
+		return horaIngreso;
 	}
 
-	public void setHora_ingreso(Date hora_ingreso) {
-		this.hora_ingreso = hora_ingreso;
+	public void setHoraIngreso(Date horaIngreso) {
+		this.horaIngreso = horaIngreso;
 	}
 
 }

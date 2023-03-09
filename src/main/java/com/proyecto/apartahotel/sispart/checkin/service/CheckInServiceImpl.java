@@ -1,6 +1,6 @@
 package com.proyecto.apartahotel.sispart.checkin.service;
 
-
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -11,7 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import com.proyecto.apartahotel.sispart.checkin.entity.CheckIn;
 import com.proyecto.apartahotel.sispart.checkin.repository.ICheckInRepository;
 import com.proyecto.apartahotel.sispart.huespedes.entity.Huesped;
-
 
 @Service
 @Transactional
@@ -27,7 +26,7 @@ public class CheckInServiceImpl implements ICheckInService {
 	}
 
 	@Override
-	public List<CheckIn> findByIdHuesped(int idHuesped) {
+	public List<CheckIn> findByIdHuesped(Huesped idHuesped) {
 
 		return checkInRepository.findByIdHuesped(idHuesped);
 
@@ -37,6 +36,12 @@ public class CheckInServiceImpl implements ICheckInService {
 	public Optional<CheckIn> getOne(int id) {
 
 		return checkInRepository.findById(id);
+	}
+
+	@Override
+	public Optional<CheckIn> findByIdHuespedAndfechaIngreso(Huesped idHuesped, Date fechaIngreso) {
+
+		return checkInRepository.findByIdHuespedAndFechaIngreso(idHuesped, fechaIngreso);
 	}
 
 	@Override
@@ -50,7 +55,6 @@ public class CheckInServiceImpl implements ICheckInService {
 	public void delete(int codigoCheckIn) {
 
 		checkInRepository.deleteById(codigoCheckIn);
-		
 
 	}
 
@@ -61,7 +65,7 @@ public class CheckInServiceImpl implements ICheckInService {
 	}
 
 	@Override
-	public boolean existsByIdHuesped(int idHuesped) {
+	public boolean existsByIdHuesped(Huesped idHuesped) {
 
 		return checkInRepository.existsByIdHuesped(idHuesped);
 	}

@@ -22,6 +22,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateSerializer;
 import com.proyecto.apartahotel.sispart.habitacion.entity.Habitaciones;
 import com.proyecto.apartahotel.sispart.huespedes.entity.Huesped;
+import com.proyecto.apartahotel.sispart.tipDocumento.entity.TipoDocumento;
 
 @Entity
 @Table(name = "Check_In")
@@ -36,6 +37,7 @@ public class CheckIn implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "id_huesped")
 	private Huesped idHuesped;
+
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "id_habitacion")
@@ -49,47 +51,45 @@ public class CheckIn implements Serializable {
 	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	@JsonFormat(pattern = "dd-MM-yyyy", timezone = "GMT-5")
 	@NotNull
-	private Date fecha_ingreso;
+	private Date fechaIngreso;
 
 	@Temporal(TemporalType.TIME)
 	@DateTimeFormat(pattern = "HH:mm")
 	@JsonFormat(pattern = "HH:mm", timezone = "GMT-5")
 	@NotNull
-	private Date hora_ingreso;
+	private Date horaIngreso;
 
 	public CheckIn() {
 
 	}
 
-	public CheckIn(@NotNull Huesped idHuesped, @NotNull Habitaciones idHabitacion, @NotNull Integer numAcompanantes,
-			@NotNull Integer dias_aprox_estadia, @NotNull Date fecha_ingreso, @NotNull Date hora_ingreso,
-			Integer codigoCheckIn) {
-
+	public CheckIn(Integer codigoCheckIn, @NotNull Huesped idHuesped, @NotNull Habitaciones idHabitacion,
+			@NotNull Integer numAcompanantes, @NotNull Integer dias_aprox_estadia, @NotNull Date fechaIngreso,
+			@NotNull Date horaIngreso) {
 		this.codigoCheckIn = codigoCheckIn;
 		this.idHuesped = idHuesped;
 		this.idHabitacion = idHabitacion;
 		this.numAcompanantes = numAcompanantes;
 		this.dias_aprox_estadia = dias_aprox_estadia;
-		this.fecha_ingreso = fecha_ingreso;
-		this.hora_ingreso = hora_ingreso;
+		this.fechaIngreso = fechaIngreso;
+		this.horaIngreso = horaIngreso;
 	}
 
 	public CheckIn(@NotNull Huesped idHuesped, @NotNull Habitaciones idHabitacion, @NotNull Integer numAcompanantes,
-			@NotNull Integer dias_aprox_estadia, @NotNull Date fecha_ingreso, @NotNull Date hora_ingreso) {
-
+			@NotNull Integer dias_aprox_estadia, @NotNull Date fechaIngreso, @NotNull Date horaIngreso) {
 		this.idHuesped = idHuesped;
 		this.idHabitacion = idHabitacion;
 		this.numAcompanantes = numAcompanantes;
 		this.dias_aprox_estadia = dias_aprox_estadia;
-		this.fecha_ingreso = fecha_ingreso;
-		this.hora_ingreso = hora_ingreso;
+		this.fechaIngreso = fechaIngreso;
+		this.horaIngreso = horaIngreso;
 	}
 
-	public Integer getcodigoCheckIn() {
+	public Integer getCodigoCheckIn() {
 		return codigoCheckIn;
 	}
 
-	public void setcodigoCheckIn(Integer codigoCheckIn) {
+	public void setCodigoCheckIn(Integer codigoCheckIn) {
 		this.codigoCheckIn = codigoCheckIn;
 	}
 
@@ -109,11 +109,11 @@ public class CheckIn implements Serializable {
 		this.idHabitacion = idHabitacion;
 	}
 
-	public Integer getnumAcompanantes() {
+	public Integer getNumAcompanantes() {
 		return numAcompanantes;
 	}
 
-	public void setnumAcompanantes(Integer numAcompanantes) {
+	public void setNumAcompanantes(Integer numAcompanantes) {
 		this.numAcompanantes = numAcompanantes;
 	}
 
@@ -125,20 +125,20 @@ public class CheckIn implements Serializable {
 		this.dias_aprox_estadia = dias_aprox_estadia;
 	}
 
-	public Date getFecha_ingreso() {
-		return fecha_ingreso;
+	public Date getFechaIngreso() {
+		return fechaIngreso;
 	}
 
-	public void setFecha_ingreso(Date fecha_ingreso) {
-		this.fecha_ingreso = fecha_ingreso;
+	public void setFechaIngreso(Date fechaIngreso) {
+		this.fechaIngreso = fechaIngreso;
 	}
 
-	public Date getHora_ingreso() {
-		return hora_ingreso;
+	public Date getHoraIngreso() {
+		return horaIngreso;
 	}
 
-	public void setHora_ingreso(Date hora_ingreso) {
-		this.hora_ingreso = hora_ingreso;
+	public void setHoraIngreso(Date horaIngreso) {
+		this.horaIngreso = horaIngreso;
 	}
 
 	private static final long serialVersionUID = 5451699424516695779L;

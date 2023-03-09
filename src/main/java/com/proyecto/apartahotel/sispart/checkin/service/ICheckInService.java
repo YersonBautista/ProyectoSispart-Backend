@@ -1,20 +1,21 @@
 package com.proyecto.apartahotel.sispart.checkin.service;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
 import com.proyecto.apartahotel.sispart.checkin.entity.CheckIn;
 import com.proyecto.apartahotel.sispart.huespedes.entity.Huesped;
 
-
-
 public interface ICheckInService {
 
 	public List<CheckIn> findAll();
 
-	public List<CheckIn> findByIdHuesped(int idHuesped);
+	public List<CheckIn> findByIdHuesped(Huesped idHuesped);
 
 	public Optional<CheckIn> getOne(int id);
+
+	public Optional<CheckIn> findByIdHuespedAndfechaIngreso(Huesped IdHuesped, Date fechaIngreso);
 
 	public void save(CheckIn checkIn);
 
@@ -22,6 +23,6 @@ public interface ICheckInService {
 
 	public boolean existsById(int id);
 
-	public boolean existsByIdHuesped(int idHuesped);
+	public boolean existsByIdHuesped(Huesped idHuesped);
 
 }
